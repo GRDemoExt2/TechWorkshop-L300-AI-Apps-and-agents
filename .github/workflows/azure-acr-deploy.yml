@@ -1,4 +1,4 @@
-name: Build and push to Azure Container Registry
+name: Build and push to Azure Container Registry TechWorkshop-L300-AI-Apps-and-agents
 
 on:
   push:
