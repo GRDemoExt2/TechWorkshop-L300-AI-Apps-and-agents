@@ -36,8 +36,8 @@ jobs:
       - name: Build and push Docker image
         run: |
           cd src/
-          docker build -t ${{ env.ACR_REGISTRY }}.azurecr.io/chat-app:latest .
-          docker push ${{ env.ACR_REGISTRY }}.azurecr.io/chat-app:latest
+          docker build -t ${{ secrets.ACR_REGISTRY }}.azurecr.io/chat-app:latest .
+          docker push ${{ secrets.ACR_REGISTRY }}.azurecr.io/chat-app:latest
 
       - name: Securely remove src/.env from runner
         run: |
