@@ -33,15 +33,11 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
           
-      - name: Build and push Docker image to ACR
-        uses: docker/build-push-action@v4
-        with:
-          context: ./src
-          file: ./src/Dockerfile
-          push: true
-          tags: |
-            ${{ secrets.ACR_REGISTRY }}/myapp:${{ github.sha }}
-            ${{ secrets.ACR_REGISTRY }}/myapp:latest
+      - name: Build and push Docker image
+        run: |
+          cd src/
+          docker build -t ${{ env.ACR_REGISTRY }}/${{ env.IMAGE_NAME }}:latest .
+          docker push ${{ env.ACR_REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
       - name: Securely remove src/.env from runner
         run: |
