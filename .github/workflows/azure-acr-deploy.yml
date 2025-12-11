@@ -3,7 +3,8 @@ name: Build and push to Azure Container Registry TechWorkshop-L300-AI-Apps-and-a
 on:
   push:
     branches:
-      - main
+      - GR-dev
+  workflow_dispatch:
 
 jobs:
   build-and-push:
